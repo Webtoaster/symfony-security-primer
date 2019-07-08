@@ -395,6 +395,8 @@
 		}
 		
 		/**
+		 *
+		 * TODO Complete this method.
 		 * @Route("/email_resend", name="app_email_resend")
 		 *
 		 * @param   Request                        $request
@@ -405,7 +407,10 @@
 		 * @throws Exception
 		 * @return Response
 		 */
-		public function register_email_resend(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, AppAuthenticator $authenticator): Response
+		public function register_email_resend(Request $request,
+		                                      UserPasswordEncoderInterface $passwordEncoder,
+		                                      GuardAuthenticatorHandler $guardHandler,
+		                                      AppAuthenticator $authenticator): Response
 		{
 			return $this->render('base.html.twig', [
 				//	'form' => $form->createView(),
@@ -419,7 +424,7 @@
 		 *
 		 * @return string
 		 */
-		private function makeVerificationKey(string $email_address)
+		private function makeVerificationKey(string $email_address): string
 		{
 			return md5($_ENV['APP_SECRET'].$email_address);
 		}

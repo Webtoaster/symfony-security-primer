@@ -7,7 +7,6 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 
 Encore
 
-
 /**
  * Set Paths
  * .setOutputPath('public/build/')
@@ -119,11 +118,6 @@ Encore
 	 * If using type scripts
 	 * .enableTypeScriptLoader()
 	 */
-	
-	
-	// uncomment to get integrity="..." attributes on your script & link tags
-	// requires WebpackEncoreBundle 1.4 or higher
-	
 	
 	/**
 	 * To use integrity hashes

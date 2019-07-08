@@ -2,11 +2,8 @@
 	
 	namespace App\Controller;
 	
-	use App\Entity\Person;
 	use App\Repository\PersonRepository;
-	use Psr\Log\LoggerInterface;
 	use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\HttpFoundation\Response;
 	use Symfony\Component\Routing\Annotation\Route;
 	
@@ -42,7 +39,5 @@
 				'controller_name' => 'DefaultController',
 			]);
 		}
-		
-		
 		
 	}

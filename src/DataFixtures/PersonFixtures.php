@@ -52,7 +52,7 @@
 			$person->setPhoneHome($_ENV['PHONE_HOME']);
 			$person->setPhoneMobile($_ENV['PHONE_MOBILE']);
 			$person->setPhoneWork($_ENV['PHONE_WORK']);
-
+			
 			$person->setVerificationKey(MD5(microtime()));
 			$person->setVerificationDate(new DateTime());
 			$person->setVerificationIpAddress('127.0.0.1');
@@ -60,17 +60,15 @@
 			
 			$person->setTermsId(1);
 			$person->setAgreedToTermsAt(new DateTime());
-
+			
 			$person->setIsActive(TRUE);
 			$person->setIsVerified(TRUE);
 			$person->setIsRegistered(TRUE);
 			$person->setHasStartedRegistration(TRUE);
 			
 			$person->setRoles([
-				'ROLE_SUPER_ADMIN'
-				
-				]);
-			
+				'ROLE_SUPER_ADMIN',
+			]);
 			
 			$manager->persist($person);
 			$manager->flush();

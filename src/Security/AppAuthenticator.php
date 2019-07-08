@@ -95,7 +95,7 @@
 		 *
 		 * @return array|mixed
 		 */
-		public function getCredentials(Request $request)
+		public function getCredentials(Request $request): Array
 		{
 			$credentials = [
 				'email'      => $request->request->get('login_email'),

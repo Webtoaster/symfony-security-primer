@@ -3,12 +3,9 @@
 	namespace App\Form\Model;
 	
 	use Symfony\Component\Validator\Constraints as Assert;
-
-	
 	
 	class EmailChangeFormModel
 	{
-		
 		
 		/**
 		 * @var $email string
@@ -26,8 +23,6 @@
 		 */
 		public $emailCurrent;
 		
-		
-		
 		/**
 		 * @var $email string
 		 * @Assert\All({
@@ -43,10 +38,5 @@
 		 * })
 		 */
 		public $emailNew;
-		
-		
-		
-		
-		
 		
 	}

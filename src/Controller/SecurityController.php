@@ -59,13 +59,6 @@
 		 */
 		public function change_password()
 		{
-		
-		
-		
-		
-		
-		
-		
 		}
 		
 		/**

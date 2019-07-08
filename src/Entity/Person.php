@@ -1095,7 +1095,7 @@
 		}
 		
 		/**
-		 * @return void|null
+		 * @return string|null
 		 * @see UserInterface
 		 */
 		public function getSalt(): ?string
@@ -1105,7 +1105,7 @@
 		}
 		
 		/**
-		 * @return void|null
+		 * @return string|null
 		 * @see UserInterface
 		 */
 		public function eraseCredentials(): ?string
