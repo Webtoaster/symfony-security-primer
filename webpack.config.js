@@ -34,9 +34,9 @@ Encore
 	.addEntry('app_register', './assets/js/app_register.js')
 	.addEntry('app_security', './assets/js/app_security.js')
 	
-	.addStyleEntry('app', './assets/css/app.scss')
-	.addStyleEntry('app_register', './assets/css/app_register.scss')
-	.addStyleEntry('app_security', './assets/css/app_security.scss')
+	.addStyleEntry('ui', './assets/css/app.scss')
+	.addStyleEntry('ui_register', './assets/css/app_register.scss')
+	.addStyleEntry('ui_security', './assets/css/app_security.scss')
 	
 	/**
 	 * Future Entries
