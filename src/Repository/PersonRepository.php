@@ -23,13 +23,19 @@
 		 * This will remove orphaned contacts which were not verified after XXX amount of time.
 		 * The setting for the amount of time is set in the ENV settings.
 		 *
+		 * @return bool
 		 * @author Tom Olson <olson@webtoaster.com>
 		 *
 		 */
-		public function delete_orphaned_registrants()
+		public function delete_orphaned_registrants(): bool
 		{
 			$sql = '';
-			// $sql .= 'SET time_zone = \''.$_ENV['MYSQL_TIME_ZONE'].'\';';
+			
+			/**
+			 * You may need to add this to the SQL code in case your SQL server has a problem with TimeZones not being set.
+			 *
+			 * $sql .= 'SET time_zone = \''.$_ENV['MYSQL_TIME_ZONE'].'\';';
+			 */
 			$sql  .= ' DELETE FROM
 						person
 					WHERE
@@ -40,9 +46,10 @@
 			try {
 				$conn->exec($sql);
 			} catch (DBALException $e) {
-//				TODO Implement Logging Feature Here.
+				// TODO Implement Logging Feature Here.
 			}
-			return;
+			
+			return TRUE;
 		}
 		
 		
