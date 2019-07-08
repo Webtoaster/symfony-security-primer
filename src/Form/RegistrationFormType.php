@@ -196,7 +196,7 @@
 		/**
 		 * @param   OptionsResolver   $resolver
 		 *
-		 * @return NULL|void
+		 * @return void
 		 */
 		public function configureOptions(OptionsResolver $resolver): ?void
 		{
