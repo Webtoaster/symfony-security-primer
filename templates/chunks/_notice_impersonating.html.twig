@@ -1,0 +1,15 @@
+{#
+This is for an ROLE_ADMIN impersonating a ROLE_USER.
+
+This is a warning flag for them to be careful when they are
+working in this mode and also give them the exit link to stop
+the user impersonation.
+#}
+{% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+	<!-- from chunks/_notice_impersonation -->
+<div class="container">
+	<div class="alert alert-warning" style="margin-bottom: 0;">
+		You are ad Administrator Impersonating a Different User.&nbsp; <a href="{{ path('app_homepage', {'_switch_user': '_exit'}) }}">Exit
+	</div>
+</div>
+{% endif %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Email Has Been Sent To You.{% endblock %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app_register') }}
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app_register') }}
+{% endblock %}
+
+{% block body %}
+    
+    <h1 class="mt-2">Email Verification has been sent.</h1>
+    <p class="lead">Dear {{ first_name }},</p>
+
+    <p>We have sent you an email to {{ email_address }}.</p>
+
+    <p>Please open your email and click on the link to verify your email address.</p>
+
+    <p>This link expires in 1 hour.</p>
+
+    <p>Thank you,</p>
+
+    <p>The Community Election Team</p>
+{% endblock %}
+

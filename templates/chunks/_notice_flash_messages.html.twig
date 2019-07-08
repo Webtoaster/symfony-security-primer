@@ -1,0 +1,18 @@
+{#
+These are the flash messages which will be seen at the
+top of the page when passed by a Symfony Controller
+#}
+{% for type, messages in app.session.flashBag.all() %}
+	<!-- from chunks/_notice_flash_messages -->
+	<div class="container clearfix mt-3 mb-0">
+		{% for message in messages %}
+			<div class="alert alert-{{ type }} alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				{{ message | raw }}
+			</div>
+		{% endfor %}
+	</div>
+{% endfor %}

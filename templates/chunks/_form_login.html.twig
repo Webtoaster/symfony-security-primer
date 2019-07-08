@@ -1,0 +1,15 @@
+<input type="email" id="inputEmail" class="form-control" placeholder="Email Address" value="{{ last_email }}" name="login_email" required
+       autofocus/>
+
+<input type="password" name="login_password" id="inputPassword" class="form-control" placeholder="Password" required/>
+
+<div class="checkbox mb-3">
+	<label>
+		<input type="checkbox" value="_remember-me"> Remember me
+	</label>
+</div>
+
+<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+
+

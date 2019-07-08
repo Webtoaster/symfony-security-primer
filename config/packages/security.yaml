@@ -1,0 +1,63 @@
+security:
+    encoders:
+        App\Entity\Person:
+            algorithm: auto
+            #cost: 12
+    access_control:
+        # require ROLE_ADMIN for /admin*
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    role_hierarchy:
+        ROLE_USER:                  ROLE_MEMBER
+        ROLE_ELECTION_VIEWER:       [ROLE_USER, ROLE_MEMBER]
+        ROLE_ELECTION_EDITOR:       [ROLE_ELECTION_VIEWER, ROLE_USER]
+        ROLE_ELECTION_OWNER:        [ROLE_ELECTION_EDITOR, ROLE_ELECTION_VIEWER, ROLE_USER]
+        ROLE_ASSOCIATION_VIEWER:    [ROLE_ELECTION_VIEWER, ROLE_USER]
+        ROLE_ASSOCIATION_EDITOR:    [ROLE_ASSOCIATION_VIEWER, ROLE_ELECTION_OWNER, ROLE_USER]
+        ROLE_ASSOCIATION_OWNER:     [ROLE_ASSOCIATION_EDITOR, ROLE_ASSOCIATION_VIEWER, ROLE_ELECTION_OWNER, ROLE_USER, ROLE_MEMBER]
+        ROLE_ADMIN:                 [ROLE_ASSOCIATION_OWNER, ROLE_ELECTION_OWNER, ROLE_USER]
+        ROLE_SUPER_ADMIN:           [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH, ROLE_USER]
+    providers:
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class:    App\Entity\Person
+                property: email
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+            logout:
+                path:   app_logout
+                target: /
+        main:
+            anonymous:   true
+            guard:
+                authenticators:
+                    - App\Security\AppAuthenticator
+                #                    - App\Security\EmptyAuthenticator
+                #                    - App\Security\LoginAuthenticator
+                entry_point: App\Security\AppAuthenticator
+            form_login:
+                login_path:                     app_login
+                check_path:                     app_login
+                provider:                       app_user_provider
+                use_forward:                    false
+                username_parameter:             login_email
+                password_parameter:             login_password
+                post_only:                      true
+                always_use_default_target_path: false
+                default_target_path:            /
+                target_path_parameter:          _target_path
+                use_referer:                    false
+            security:    true  # TODO  true to test , false to ignore.
+            logout:
+                path:   app_logout
+                target: /
+            
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 2592000 # 30 days in seconds
+            switch_user: true
+            

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registration - About Yourself{% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('app_register') }}
+{% endblock %}
+{% block javascripts %}
+	{{ encore_entry_script_tags('app_register') }}
+{% endblock %}
+
+
+{% block body %}
+	<h1 class="mt-2">Sign Up</h1>
+	<p class="lead">Please enter your First and Last Name, at least one Telephone Number and Enter a 6 character password below to get you started.&nbsp;
+	                Your Email Address is your User I.D..&nbsp; Your Email Address will require verification upon accepting the Terms of Use on the
+	                next page.</p>
+	{{ include('registration/_form_register.html.twig') }}
+{% endblock %}
+
+
+
+
+

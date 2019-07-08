@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="A Web Application for Community Based Elections">
+	<meta name="author" content="Tom Olson <olson@webtoaster.com>">
+	
+	{#	This makes sure there is a hyphen between the Site Name and the Page Name when not on the Home Page #}
+	{% if  path('app_home') == TRUE %}
+		<title>{{ site_name }}</title>
+	{% else %}
+		<title>{{ site_name }} - {% block title %}{% endblock %}</title>
+	{% endif %}
+	
+	{{ encore_entry_link_tags('app') }}
+	{% block stylesheets %}{% endblock %}
+	
+	
+</head>
+
+<body class="d-flex flex-column h-100">
+{#This page follows the Bootstrap Sticky Footer with Fixed Navbar #}
+{#layout which is demonstrated here. #}
+{#https://getbootstrap.com/docs/4.3/examples/sticky-footer-navbar/#}
+
+<header>
+	{{ include('chunks/_header_navigation.html.twig') }}
+
+</header>
+
+<main role="main" class="flex-shrink-0">
+	
+	
+	{{ include('chunks/_notice_impersonating.html.twig') }}
+	{{ include('chunks/_notice_flash_messages.html.twig') }}
+	
+	
+	<div class="container">
+		{% block body %}{% endblock %}
+	</div>
+</main>
+
+<footer class="footer mt-auto py-3">
+	<div class="container">
+		{{ include('chunks/_footer_main.html.twig') }}
+	</div>
+</footer>
+
+
+
+{{ encore_entry_script_tags('app') }}
+{% block javascripts %}{% endblock %}
+
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+/*Import*/
+@import '~bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+/*Variables*/
+@import './helper/variables';
+
+/*Layout Components*/
+@import './layout/header';
+@import './layout/body';
+@import './layout/nav';
+@import './layout/main';
+@import './layout/footer';
+
+/*Components*/
+@import './components/form';
+
+.bg-dark {
+  background-color: $bg_navbar !important;
+  }
+
+
