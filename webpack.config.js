@@ -1,20 +1,29 @@
 let Encore = require('@symfony/webpack-encore');
 
-//  Manual implementation of the environment since Webpack and PHPStorm have a couple of shortcomings.
+// Manual implementation of the environment since Webpack and PHPStorm have a couple of shortcomings.
 if (!Encore.isRuntimeEnvironmentConfigured()) {
 	Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
 }
 
 Encore
-//  Set Paths
+
+
+/**
+ * Set Paths
+ * .setOutputPath('public/build/')
+ * .setPublicPath('/build')
+ */
 	.setOutputPath('public/build/')
 	.setPublicPath('/build')
 	
-	// Use CDNs
-	//.setManifestKeyPrefix('build/')
 	
 	/**
-	 * ENTRY CONFIG
+	 * If you are using a CDN, then configure here.
+	 * .setManifestKeyPrefix('build/')
+	 */
+	
+	/**
+	 * ENTRIES
 	 *
 	 * Add 1 entry for each "page" of your app
 	 * (including one that's included on every page - e.g. "app")
@@ -30,22 +39,29 @@ Encore
 	.addStyleEntry('app_register', './assets/css/app_register.scss')
 	.addStyleEntry('app_security', './assets/css/app_security.scss')
 	
+	/**
+	 * Future Entries
+	 * .addEntry('app_dashboard', './assets/js/app_dashboard.js')
+	 * .addEntry('', './assets/js/.js')
+	 *
+	 */
 	
 	
-	
-	
-	
-	
-	// .addEntry('app_dashboard', './assets/js/app_dashboard.js')
-	// .addEntry('', './assets/js/.js')
-	
-	// Split into Smaller Files.
+	/**
+	 * Split into Smaller Files.
+	 */
 	.splitEntryChunks()
 	
 	// will require an extra script tag for runtime.js
 	// but, you probably want this, unless you're building a single-page app
+	
+	/**
+	 * Runtime Chunks.
+	 * .disableSingleRuntimeChunk()
+	 * .enableSingleRuntimeChunk()
+	 */
 	.enableSingleRuntimeChunk()
-	//.disableSingleRuntimeChunk()
+	
 	
 	/*
 	 * FEATURE CONFIG
@@ -53,43 +69,78 @@ Encore
 	 * Enable & configure other features below. For a full
 	 * list of features, see:
 	 * https://symfony.com/doc/current/frontend.html#adding-more-features
+	 *
+	 * .cleanupOutputBeforeBuild()
+	 * .enableBuildNotifications()
+	 * .enableSourceMaps(!Encore.isProduction())
 	 */
 	.cleanupOutputBeforeBuild()
 	.enableBuildNotifications()
 	.enableSourceMaps(!Encore.isProduction())
 	
-	// Enables hashed filenames (e.g. app.abc123.css)
+	/**
+	 * Hashed File Names
+	 * .enableVersioning(Encore.isProduction())
+	 *
+	 */
 	.enableVersioning(Encore.isProduction())
 	
-	// Enables @babel/preset-env polyfills
+	/**
+	 * Babel Configurations
+	 * Enables @babel/preset-env polyfills
+	 *
+	 */
 	.configureBabel(() => {
 	}, {
 		useBuiltIns: 'usage',
 		corejs: 3
 	})
 	
-	// Enable Sass
+	/**
+	 * Enables SASS File Support
+	 * .enableSassLoader()
+	 * .enablePostCssLoader()
+	 */
 	.enableSassLoader()
 	.enablePostCssLoader()
 	
+	
+	
+	/**
+	 * Paths for Copied Files out of the Assets directory to public/build.
+	 */
 	.copyFiles({
 		from: './assets/images',
 		to: 'images/[path][name].[hash:8].[ext]'
 	})
 	
-	// uncomment if you use TypeScript
-	//.enableTypeScriptLoader()
+	
+	/**
+	 * If using type scripts
+	 * .enableTypeScriptLoader()
+	 */
+	
 	
 	// uncomment to get integrity="..." attributes on your script & link tags
 	// requires WebpackEncoreBundle 1.4 or higher
-	//.enableIntegrityHashes()
 	
-	// uncomment if you're having problems with a jQuery plugin
+	
+	/**
+	 * To use integrity hashes
+	 * .enableIntegrityHashes()
+	 */
+	
+	/**
+	 * To fix problems with JQUery Plugins
+	 * .autoProvidejQuery()
+	 */
 	.autoProvidejQuery()
 
-//  uncomment if you use API Platform Admin (composer req api-admin)
-//  .enableReactPreset()
-//  .addEntry('admin', './assets/js/admin.js')
+	/**
+	 * For using the API platform.
+	 * .enableReactPreset()
+	 */
+
 
 ;
 
