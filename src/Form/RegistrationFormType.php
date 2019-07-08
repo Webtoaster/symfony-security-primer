@@ -150,43 +150,6 @@
 					]
 				
 				)
-				
-				
-				
-//				->add('plainPassword', PasswordType::class, [
-//					'invalid_message' => 'Your password does not match the confirmation.',
-//					'mapped'          => FALSE,
-////					'options'         => ['attr' => ['class' => 'password-field']],
-//					'required'        => TRUE,
-//					'constraints'     => [
-//						new NotBlank([
-//								'message' => 'Please enter a password',
-//							]
-//						),
-//						new Length([
-//								'min'        => 8,
-//								'minMessage' => 'Your password should be at least {{ limit }} characters',
-//								'max'        => 4096,
-//							]
-//						),
-//						new Regex([
-//								'pattern' => '/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/s',
-//								'match'   => TRUE,
-//								'message' => 'Please enter a valid password.  See the requirements below.',
-//							]
-//						),
-//					],
-//					'label'           => 'Password',
-//					'help'            => 'Password must contain 1 number (0-9).<br/>
-//										Password must contain 1 uppercase letter.<br/>
-//										Password must contain 1 lowercase letter.<br/>
-//										Password must contain 1 non-alpha numeric number.<br/>
-//										Password must be between 6-16 characters without spaces.<br/>',
-//					'help_html'       => TRUE,
-//					'attr'            => ['class' => NULL,],
-//				])
-				
-				
 				->add('plainPassword', RepeatedType::class, [
 						'type'            => PasswordType::class,
 						'invalid_message' => 'Your password does not match the confirmation.',
@@ -227,29 +190,18 @@
 							'attr'  => ['class' => NULL,],
 						],
 					]
-				)
-			
-			
-			
-			;
+				);
 		}
 		
 		/**
 		 * @param   OptionsResolver   $resolver
 		 *
+		 * @return NULL|void
 		 */
-		public function configureOptions(OptionsResolver $resolver)
+		public function configureOptions(OptionsResolver $resolver): ?void
 		{
 			$resolver->setDefaults([
-				'data_class'        => Person::class,
-//				'validation_groups' => [
-//					'names',
-//					'mailingAddress',
-//					'password',
-//					'email',
-//				],
+				'data_class' => Person::class,
 			]);
-			
-			return;
 		}
 	}
