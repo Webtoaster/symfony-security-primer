@@ -64,12 +64,10 @@
 		public function __construct(
 			EntityManagerInterface $entityManager,
 			UrlGeneratorInterface $urlGenerator,
-			RouterInterface $router,
 			CsrfTokenManagerInterface $csrfTokenManager,
 			UserPasswordEncoderInterface $passwordEncoder)
 		{
 			$this->entityManager    = $entityManager;
-			$this->router           = $router;
 			$this->csrfTokenManager = $csrfTokenManager;
 			$this->passwordEncoder  = $passwordEncoder;
 			$this->urlGenerator     = $urlGenerator;
@@ -84,12 +82,6 @@
 		{
 			return 'login' === $request->attributes->get('_route')
 				&& $request->isMethod('POST');
-
-//			return $request->attributes->get('_route') === 'login'
-//				&& $request->isMethod('POST');
-
-//			return 'app_login' === $request->attributes->get('_route')
-//				&& $request->isMethod('POST');
 		}
 		
 		/**
@@ -148,7 +140,6 @@
 			return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
 		}
 		
-		
 		/**
 		 * @param   Request          $request
 		 * @param   TokenInterface   $token
@@ -163,9 +154,6 @@
 			}
 			
 			return new RedirectResponse($this->urlGenerator->generate('app_email_verification_completed'));
-			
-			
-			
 			//  todo clean this line up since it is unreachable.   throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
 		}
 		
