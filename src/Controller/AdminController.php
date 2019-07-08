@@ -9,7 +9,7 @@
 	
 	/**
 	 * Class AdminController
-	 * @Route("/signup")
+	 * @Route("/admin")
 	 * @IsGranted("ROLE_ADMIN")
 	 *
 	 * @package App\Controller
@@ -39,9 +39,7 @@
 			/*
 			 * See redundant in the dictionary
 			 */
-			$this->denyAccessUnlessGranted('ROLE_ADMIN');
-			
-			$this->denyAccessUnlessGranted('ROLE_ADMIN', NULL, 'User tried to access a page without having ROLE_ADMIN');
+			$this->denyAccessUnlessGranted('ROLE_ADMIN', 'Attempted Breech.', 'User tried to access a page without having ROLE_ADMIN');
 		}
 		
 	}
