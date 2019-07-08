@@ -78,7 +78,7 @@
 		 *
 		 * @return bool
 		 */
-		public function supports(Request $request)
+		public function supports(Request $request): bool
 		{
 			return 'login' === $request->attributes->get('_route')
 				&& $request->isMethod('POST');
@@ -141,7 +141,7 @@
 		 *
 		 * @return bool
 		 */
-		public function checkCredentials($credentials, UserInterface $user)
+		public function checkCredentials($credentials, UserInterface $user): bool
 		{
 			return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
 		}
@@ -167,7 +167,7 @@
 		/**
 		 * @return string
 		 */
-		public function getLoginUrl()
+		public function getLoginUrl(): string
 		{
 			return $this->urlGenerator->generate('app_login');
 		}
