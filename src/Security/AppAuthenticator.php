@@ -64,12 +64,10 @@
 		public function __construct(
 			EntityManagerInterface $entityManager,
 			UrlGeneratorInterface $urlGenerator,
-			RouterInterface $router,
 			CsrfTokenManagerInterface $csrfTokenManager,
 			UserPasswordEncoderInterface $passwordEncoder)
 		{
 			$this->entityManager    = $entityManager;
-			$this->router           = $router;
 			$this->csrfTokenManager = $csrfTokenManager;
 			$this->passwordEncoder  = $passwordEncoder;
 			$this->urlGenerator     = $urlGenerator;
@@ -147,7 +145,6 @@
 		{
 			return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
 		}
-		
 		
 		/**
 		 * @param   Request          $request
