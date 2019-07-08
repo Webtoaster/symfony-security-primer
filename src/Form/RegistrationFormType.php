@@ -196,7 +196,6 @@
 		/**
 		 * @param   OptionsResolver   $resolver
 		 *
-		 * @return null
 		 */
 		public function configureOptions(OptionsResolver $resolver)
 		{
