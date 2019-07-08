@@ -196,9 +196,9 @@
 		/**
 		 * @param   OptionsResolver   $resolver
 		 *
-		 * @return NULL|void
+		 * @return null
 		 */
-		public function configureOptions(OptionsResolver $resolver): ?void
+		public function configureOptions(OptionsResolver $resolver)
 		{
 			$resolver->setDefaults([
 				'data_class' => Person::class,
