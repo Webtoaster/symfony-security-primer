@@ -26,3 +26,4 @@ yarn-error.log
 /symfony.lock
 /yarn.lock
 /.idea/
+/.env.dev.local
