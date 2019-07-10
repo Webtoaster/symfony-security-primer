@@ -42,6 +42,7 @@
     "style-loader": "^0.21.0",
     "terser-webpack-plugin": "^1.1.0",
     "tmp": "^0.0.33",
+    "tslint": "^5.0.0",
     "watch": "^1.0.2",
     "webpack-chunk-hash": "^0.6.0",
     "webpack-manifest-plugin": "^2.0.2",
@@ -136,6 +137,5 @@
     "index.js"
   ],
   "peerDependencies": {
-    "tslint": "^5.0.0"
   }
 }
